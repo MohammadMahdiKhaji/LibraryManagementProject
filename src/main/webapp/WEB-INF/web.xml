@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+<!--    <security-role>-->
+<!--        <role-name>Manager</role-name>-->
+<!--    </security-role>-->
+
+<!--    <security-role>-->
+<!--        <role-name>Teacher</role-name>-->
+<!--    </security-role>-->
+
+<!--    <security-role>-->
+<!--        <role-name>Client</role-name>-->
+<!--    </security-role>-->
+
+<!--    <security-constraint>-->
+<!--        <web-resource-collection>-->
+<!--            <web-resource-name>loginServlet</web-resource-name>-->
+<!--            <url-pattern>/login</url-pattern>-->
+<!--            <url-pattern>/login/*</url-pattern>-->
+<!--            <http-method>POST</http-method>-->
+<!--        </web-resource-collection>-->
+<!--        <auth-constraint>-->
+<!--            <role-name>Manager</role-name>-->
+<!--            <role-name>Teacher</role-name>-->
+<!--            <role-name>Client</role-name>-->
+<!--        </auth-constraint>-->
+<!--    </security-constraint>-->
+
+<!--    <login-config>-->
+<!--        <auth-method>BASIC</auth-method>-->
+<!--    </login-config>-->
+
+<!--    <security-constraint>-->
+<!--        <web-resource-collection>-->
+<!--            <web-resource-name>loginServlet</web-resource-name>-->
+<!--            <url-pattern>/signup</url-pattern>-->
+<!--            <url-pattern>/signup/*</url-pattern>-->
+<!--            <http-method>POST</http-method>-->
+<!--        </web-resource-collection>-->
+<!--        <auth-constraint>-->
+<!--            <role-name>Manager</role-name>-->
+<!--            <role-name>Teacher</role-name>-->
+<!--            <role-name>Client</role-name>-->
+<!--        </auth-constraint>-->
+<!--    </security-constraint>-->
+
+                <!-- -->
+
+    <context-param>
+        <param-name>host</param-name>
+        <param-value>your_stmp_server</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>port</param-name>
+        <param-value>25</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>email</param-name>
+        <param-value>your sender email</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>name</param-name>
+        <param-value>your sender name</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>pass</param-name>
+        <param-value>your sender email password</param-value>
+    </context-param>
+</web-app>
