@@ -20,16 +20,17 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (UserAccessController.getUserAccessController().login(req.getParameter("username"), req.getParameter("password"))){
+        if (UserAccessController.getUserAccessController().login(req.getParameter("username"), req.getParameter("password"))) {
 //            if (UserAccessController.getUserAccessController().checkClassification(req.getParameter("username"), req.getParameter("password"))) {
 //                resp.setHeader("token", TokenController.getTokenController().save(req.getParameter("username"), req.getParameter("password")).getToken());
-//                HttpSession session = req.getSession();
+            HttpSession session = req.getSession();
 //                session.setAttribute("token", TokenController.getTokenController().save(req.getParameter("username"), req.getParameter("password")).getToken());
-                SessionManager.addHttpSession(req.getSession());
-                doGet(req, resp);
-            }else {
-                resp.sendRedirect("login.jsp");
-            }
+            session.setAttribute("memberId", UserAccessController.getMemberId(req.getParameter("username"), req.getParameter("password")));
+            SessionManager.addHttpSession(req.getSession());
+            doGet(req, resp);
+        } else {
+            resp.sendRedirect("login.jsp");
+        }
 //        }else {
 //            resp.sendRedirect("login.jsp");
 //        }

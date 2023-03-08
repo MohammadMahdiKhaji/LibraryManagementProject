@@ -42,6 +42,8 @@ public class BookService extends ServiceImpl<Book, Long> {
 
     @Override
     public Book findById(Long aLong) throws Exception {
-        return null;
+        try(CRUDRepository<Book,Long> repository = new CRUDRepository<>()){
+            return repository.selectById(Book.class, aLong);
+        }
     }
 }

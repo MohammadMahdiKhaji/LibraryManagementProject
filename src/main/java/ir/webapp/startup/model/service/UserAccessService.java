@@ -74,4 +74,10 @@ public class UserAccessService extends ServiceImpl<UserAccess,Long> {
             return repository.getId(userAccess);
         }
     }
+
+    public Long getMemberId(UserAccess userAccess) throws Exception {
+        try(UserDA repository = new UserDA()){
+            return repository.getMemberId(userAccess);
+        }
+    }
 }

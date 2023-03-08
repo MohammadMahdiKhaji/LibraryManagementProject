@@ -16,15 +16,45 @@
         <tbody>
             <c:forEach items="${bookList}" var="book">
                 <tr>
+                    <td>${book.id}</td>
                     <td>${book.name}</td>
                     <td>${book.author}</td>
-                    <td>${book.price}</td>
-                    <td>${book.rackNo}</td>
+<%--                    <td>${book.price}</td>--%>
+<%--                    <td>${book.rackNo}</td>--%>
                     <td>${book.status}</td>
                     <td>${book.edition}</td>
-                    <td>${book.dateOfPurchase}</td>
+<%--                    <td>${book.dateOfPurchase}</td>--%>
+                    <td>
+                        <form action="/panel" method="PUT" >
+                            <input type="submit" name="borrow" value="${book.id}" />
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+        <tr>
+            <td>book</td>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${bookBorrowedList}" var="transaction">
+            <tr>
+                <td>${transaction.id}</td>
+                <td>${transaction.book.id}</td>
+                <td>${transaction.book.name}</td>
+                <td>${transaction.book.author}</td>
+<%--                <td>${transaction.book.price}</td>--%>
+<%--                <td>${transaction.book.rackNo}</td>--%>
+                <td>${transaction.book.status}</td>
+                <td>${transaction.book.edition}</td>
+<%--                <td>${book.dateOfPurchase}</td>--%>
+                <td>${transaction.dateOfIssue}</td>
+                <td>${transaction.dueDate}</td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

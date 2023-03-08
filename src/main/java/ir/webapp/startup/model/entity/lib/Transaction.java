@@ -20,12 +20,17 @@ import java.sql.Timestamp;
 
 public class Transaction extends BaseEntity {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private MemberRecord memberRecord;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Book book;
     private Timestamp dateOfIssue;
     private Timestamp dueDate;
+
+    public Transaction(Timestamp dateOfIssue, Timestamp dueDate) {
+        this.dateOfIssue = dateOfIssue;
+        this.dueDate = dueDate;
+    }
 
     @Override
     public String toString() {

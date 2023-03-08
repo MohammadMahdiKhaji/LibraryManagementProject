@@ -29,7 +29,10 @@ public class BaseEntity implements Serializable {
                 DbTable.valueOf(this.getClass().getSimpleName()),
                 1,
                 ActionType.Persist,
-                this.toString(),
+
+//                this.toString()
+                "tst",
+
                 "IP"));
     }
 
@@ -39,7 +42,10 @@ public class BaseEntity implements Serializable {
                 DbTable.valueOf(this.getClass().getSimpleName()),
                 1,
                 ActionType.Update,
-                this.toString(),
+
+//                this.toString(),
+                "tst",
+
                 "IP"));
     }
 

@@ -6,6 +6,9 @@ import ir.webapp.startup.model.entity.enumeration.Classification;
 import ir.webapp.startup.model.entity.general.UserAccess;
 import jakarta.persistence.*;
 import lombok.*;
+import org.glassfish.jersey.server.model.internal.SseTypeResolver;
+
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,8 +21,6 @@ import lombok.*;
 
 public class MemberRecord extends BaseEntity {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserAccess userAccess;
     @Enumerated(EnumType.STRING)
     private Classification classification;
     private Long noBookIssued;

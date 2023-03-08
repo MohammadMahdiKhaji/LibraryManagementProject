@@ -90,4 +90,16 @@ public class UserAccessController {
             return null;
         }
     }
+
+    public static Long getMemberId(String username, String password) {
+        try {
+            return UserAccessService
+                    .getUserAccessService()
+                    .getMemberId(new UserAccess(username, password));
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }

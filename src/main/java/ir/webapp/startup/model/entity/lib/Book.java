@@ -2,13 +2,11 @@ package ir.webapp.startup.model.entity.lib;
 
 import com.google.gson.Gson;
 import ir.webapp.startup.model.entity.base.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,8 +21,8 @@ public class Book extends BaseEntity {
 
     private String author;
     private String name;
-    private Double price;
-    private Long rackNo;
+//    private Double price;
+//    private Long rackNo;
     private boolean status;
     private int edition;
     private Timestamp dateOfPurchase;

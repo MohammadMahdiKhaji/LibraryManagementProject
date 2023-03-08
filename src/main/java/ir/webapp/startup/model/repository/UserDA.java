@@ -25,21 +25,29 @@ public class UserDA implements AutoCloseable  {
         return (Long) query.getSingleResult();
     }
 
-    public boolean checkClassification(UserAccess userAccess){
+    public Long getMemberId(UserAccess userAccess){
         entityManager = JPA.getJpa().getEntityManager();
-        Query query = entityManager.createQuery("select oo.classification from userAccessEntity oo where username = :username and password= :password");
+        Query query = entityManager.createQuery("select oo.memberRecord.id from userAccessEntity oo where username = :username and password= :password");
         query.setParameter("username", userAccess.getUsername());
         query.setParameter("password", userAccess.getPassword());
-        return query.getSingleResult().equals(Classification.Manager);
+        return (Long) query.getSingleResult();
     }
 
-    public String getClassification(UserAccess userAccess){
-        entityManager = JPA.getJpa().getEntityManager();
-        Query query = entityManager.createQuery("select oo.classification from userAccessEntity oo where username = :username and password= :password");
-        query.setParameter("username", userAccess.getUsername());
-        query.setParameter("password", userAccess.getPassword());
-        return String.valueOf(query.getSingleResult());
-    }
+//    public boolean checkClassification(UserAccess userAccess){
+//        entityManager = JPA.getJpa().getEntityManager();
+//        Query query = entityManager.createQuery("select oo.classification from userAccessEntity oo where username = :username and password= :password");
+//        query.setParameter("username", userAccess.getUsername());
+//        query.setParameter("password", userAccess.getPassword());
+//        return query.getSingleResult().equals(Classification.Manager);
+//    }
+//
+//    public String getClassification(UserAccess userAccess){
+//        entityManager = JPA.getJpa().getEntityManager();
+//        Query query = entityManager.createQuery("select oo.classification from userAccessEntity oo where username = :username and password= :password");
+//        query.setParameter("username", userAccess.getUsername());
+//        query.setParameter("password", userAccess.getPassword());
+//        return String.valueOf(query.getSingleResult());
+//    }
 
     public void close() throws Exception {
         entityManager.close();

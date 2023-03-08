@@ -23,14 +23,24 @@ public class PanelServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("test");
 
         HttpSession session = req.getSession();
         session.setAttribute("bookList", LibraryController.getLibraryController().findAllBook());
-
+        session.setAttribute("bookBorrowedList", LibraryController.getLibraryController().findAllBookBorrowed(Long.parseLong(String.valueOf(session.getAttribute("memberId")))));
+        System.out.println(LibraryController.getLibraryController().findAllBookBorrowed(Long.parseLong(String.valueOf(session.getAttribute("memberId")))));
         System.out.println("get");
         System.out.println("Get : "+req.getRemoteAddr());
         System.out.println("Get : "+req.getSession().getId());
         req.getRequestDispatcher("panel.jsp").forward(req, resp);
+    }
+
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        HttpSession session = req.getSession();
+        LibraryController.getLibraryController().borrowBook(
+                Long.parseLong(req.getParameter("borrow")),
+                Long.parseLong(String.valueOf(session.getAttribute("memberId"))));
     }
 }
