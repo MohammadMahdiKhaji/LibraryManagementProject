@@ -30,22 +30,30 @@ public class TransactionService extends ServiceImpl<Transaction, Long> {
 
     @Override
     public Transaction edit(Transaction transaction) throws Exception {
-        return null;
+        try(CRUDRepository<Transaction,Long> repository = new CRUDRepository<>()){
+            return repository.update(transaction);
+        }
     }
 
     @Override
     public Transaction remove(Long aLong) throws Exception {
-        return null;
+        try(CRUDRepository<Transaction,Long> repository = new CRUDRepository<>()){
+            return repository.delete(Transaction.class, aLong);
+        }
     }
 
     @Override
     public List<Transaction> findAll() throws Exception {
-        return null;
+        try(CRUDRepository<Transaction,Long> repository = new CRUDRepository<>()){
+            return repository.selectAll(Transaction.class);
+        }
     }
 
     @Override
     public Transaction findById(Long aLong) throws Exception {
-        return null;
+        try(CRUDRepository<Transaction,Long> repository = new CRUDRepository<>()){
+            return repository.selectById(Transaction.class, aLong);
+        }
     }
 
     public List<Transaction> findTransactionByMemberId(Long memberId) throws Exception {

@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>panel</title>
+    <jsp:include page="assets/Include.jsp"></jsp:include>
 </head>
 <body>
 <div>
@@ -25,9 +26,10 @@
                     <td>${book.edition}</td>
 <%--                    <td>${book.dateOfPurchase}</td>--%>
                     <td>
-                        <form action="/panel" method="PUT" >
-                            <input type="submit" name="borrow" value="${book.id}" />
+                        <form action="/panel"  method="POST">
+                            <button type="submit" name="bookId" value="${book.id}">Borrow</button>
                         </form>
+<%--                        <button onclick="borrow(this.id)" id="${book.id}">Borrow</button>--%>
                     </td>
                 </tr>
             </c:forEach>

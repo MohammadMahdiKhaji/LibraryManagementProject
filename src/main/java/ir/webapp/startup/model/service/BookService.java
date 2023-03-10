@@ -20,17 +20,23 @@ public class BookService extends ServiceImpl<Book, Long> {
 
     @Override
     public Book save(Book book) throws Exception {
-        return null;
+        try(CRUDRepository<Book,Long> repository = new CRUDRepository<>()){
+            return repository.insert(book);
+        }
     }
 
     @Override
     public Book edit(Book book) throws Exception {
-        return null;
+        try(CRUDRepository<Book,Long> repository = new CRUDRepository<>()){
+            return repository.update(book);
+        }
     }
 
     @Override
     public Book remove(Long aLong) throws Exception {
-        return null;
+        try(CRUDRepository<Book,Long> repository = new CRUDRepository<>()){
+            return repository.delete(Book.class, aLong);
+        }
     }
 
     @Override

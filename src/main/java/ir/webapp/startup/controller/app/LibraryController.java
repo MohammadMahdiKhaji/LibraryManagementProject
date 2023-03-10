@@ -49,11 +49,13 @@ public class LibraryController {
                     memberRecord.setNoBookIssued(memberRecord.getNoBookIssued() + 1);
                     MemberRecordService.getMemberRecordService().edit(memberRecord);
                     //Adds 30 days for due date
-                    return TransactionService.getTransactionService().save(new Transaction(
-                            memberRecord,
-                            book,
+                    Transaction transaction = new Transaction(
                             Timestamp.valueOf(LocalDateTime.now()),
-                            Timestamp.valueOf(LocalDateTime.now().plusDays(30))));
+                            Timestamp.valueOf(LocalDateTime.now().plusDays(30)));
+                    TransactionService.getTransactionService().save(transaction);
+                    transaction.setBook(book);
+                    transaction.setMemberRecord(memberRecord);
+                    return TransactionService.getTransactionService().edit(transaction);
                 } else {
                     //exceeded the limit
                     return null;

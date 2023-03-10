@@ -20,7 +20,9 @@ public class MemberRecordService extends ServiceImpl<MemberRecord, Long> {
 
     @Override
     public MemberRecord save(MemberRecord memberRecord) throws Exception {
-        return null;
+        try(CRUDRepository<MemberRecord,Long> repository = new CRUDRepository<>()){
+            return repository.insert(memberRecord);
+        }
     }
 
     @Override
@@ -32,12 +34,16 @@ public class MemberRecordService extends ServiceImpl<MemberRecord, Long> {
 
     @Override
     public MemberRecord remove(Long aLong) throws Exception {
-        return null;
+        try(CRUDRepository<MemberRecord,Long> repository = new CRUDRepository<>()){
+            return repository.delete(MemberRecord.class, aLong);
+        }
     }
 
     @Override
     public List<MemberRecord> findAll() throws Exception {
-        return null;
+        try(CRUDRepository<MemberRecord,Long> repository = new CRUDRepository<>()){
+            return repository.selectAll(MemberRecord.class);
+        }
     }
 
     @Override
